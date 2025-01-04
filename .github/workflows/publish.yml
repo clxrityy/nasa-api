@@ -26,7 +26,7 @@ jobs:
         scope: "@clxrity"
         cache: 'pnpm'
   
-    - run: pnpm ci
+    - run: pnpm run ci
     - run: npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
