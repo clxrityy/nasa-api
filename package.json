@@ -1,6 +1,6 @@
 {
   "name": "@clxrity/nasa-api",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A NASA API wrapper for Node.js",
   "main": "./dist/index.js",
   "files": [

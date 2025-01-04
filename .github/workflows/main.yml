@@ -1,0 +1,23 @@
+name: BUILD
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.2.1
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4.0.4
+      with:
+        node-version-vile: .nvmrc
+    
+    - name: Install
+      run: pnpm install
+
+    - name: Build Package
+      run: pnpm build
