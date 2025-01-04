@@ -1,0 +1,61 @@
+{
+  "name": "@clxrity/nasa-api",
+  "version": "0.4.0",
+  "description": "A NASA API wrapper for Node.js",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc --module commonjs --outDir dist/cjs && tsc --module esnext --outDir dist/esm && tsc --outDir dist",
+    "start": "node dist/src/index.js",
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "clean": "rm -rf dist",
+    "test:dev": "node test/index.js",
+    "deploy:publish": "pnpm clean && pnpm build && pnpm test && npm publish --access public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "nasa",
+    "api",
+    "space",
+    "astronomy",
+    "picture",
+    "image",
+    "earth",
+    "mars",
+    "rover",
+    "apod",
+    "insight",
+    "node",
+    "js",
+    "javascript",
+    "typescript",
+    "ts",
+    "axios"
+  ],
+  "author": {
+    "name": "MJ Anglin",
+    "email": "contact@mjanglin.com",
+    "url": "https://mjanglin.com",
+    "github": "https://github.com/clxrityy"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.3",
+    "dotenv": "^16.4.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
