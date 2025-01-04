@@ -1,6 +1,6 @@
 {
   "name": "@clxrity/nasa-api",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A NASA API wrapper for Node.js",
   "main": "./dist/index.js",
   "files": [
@@ -20,7 +20,9 @@
     "dev": "node --loader ts-node/esm src/index.ts",
     "clean": "rm -rf dist",
     "test:dev": "node test/index.js",
-    "deploy:publish": "pnpm clean && pnpm build && pnpm test && npm publish --access public"
+    "deploy:publish": "pnpm clean && pnpm build && pnpm test && npm publish --access public",
+    "ci": "pnpm install && pnpm clean && pnpm build && pnpm test",
+    "publish": "npm publish --provenance --access public"
   },
   "engines": {
     "node": ">=22"
