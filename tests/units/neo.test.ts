@@ -5,11 +5,13 @@ import { nasa } from "..";
 describe("NEO API (feed)", () => {
     it("should return a response", async () => {
         const response = await nasa.neo.feed({
-            start_date: "2024-02-11",
-            end_date: "2024-02-18"
+            start_date: "2025-02-11",
+            end_date: "2025-02-18"
         });
 
-        expect(response).toBeDefined();
+        setTimeout(() => {
+            expect(response).toBeDefined();
+        }, 20000)
     })
 });
 

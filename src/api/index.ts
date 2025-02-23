@@ -1,5 +1,7 @@
 import { APOD, APOD_PARAMS } from "../types/apod";
+import { EONET_PARAMS } from "../types/eonet";
 import { EARTH_API } from "./earth";
+import { EONET_API } from "./eonet";
 import { NEO_API } from "./neo";
 
 export class NASA_API {
@@ -7,6 +9,7 @@ export class NASA_API {
     private readonly baseUrl: string = "https://api.nasa.gov" as const;
     public neo: NEO_API = new NEO_API(this.apiKey);
     public earth: EARTH_API = new EARTH_API(this.apiKey);
+
 
     constructor(apiKey: string) {
         this.apiKey = apiKey;
@@ -90,5 +93,32 @@ export class NASA_API {
 
         const response = await fetch(`${this.baseUrl}/planetary/apod${this.format()}${query.length > 0 ? query : ""}`);
         return await response.json();
+    }
+
+
+    /**
+     * 
+     * @param sourceIds - The source of the events @see https://eonet.gsfc.nasa.gov/api/v3/sources
+     * @param categoryIds - The category of the events @see https://eonet.gsfc.nasa.gov/api/v3/categories
+     * @param status - The status of the events @type "open" | "closed" | "all"
+     * @param limit - The number of events to return
+     * @param days - The number of days in the past to look for events
+     * @param startDate - The start date of the events
+     * @param endDate - The end date of the events
+     * @returns 
+     */
+
+    public async getEonetEvents({
+        sourceIds,
+        categoryIds,
+        status,
+        limit = 10,
+        days = 7,
+        startDate,
+        endDate
+    }: EONET_PARAMS) {
+        const eonet = new EONET_API(sourceIds, categoryIds, status, limit, days, startDate, endDate);
+
+        return await eonet.getEvents();
     }
 }

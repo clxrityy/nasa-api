@@ -10,6 +10,7 @@
   - [Earth](#earth)
     - [Imagery](#imagery)
     - [Assets](#assets)
+  - [EONET](#eonet) — Earth Observatory Natural Event Tracker
 
 ---
 
@@ -229,4 +230,37 @@ async function earthAssets() {
     dim: 0.10
   });
 }
+```
+
+---
+
+### EONET
+
+> The Earth Observatory Natural Event Tracker (EONET) API provides a curated source of continuously updated natural event data.
+
+#### Parans
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| sourceIds | string[] | N/A | Used to filter the output by specific event sources. Acceptable sources can be accessed via the [sources JSON](https://eonet.gsfc.nasa.gov/api/v3/sources) |
+| categoryIds | string[] | N/A | Used to filter the output by specific event categories. Acceptable categories can be accessed via the [categories JSON](https://eonet.gsfc.nasa.gov/api/v3/categories) |
+| status | `open` / `closed` / `all` | N/A | Used to filter the output by the status of the events |
+| limit | number | 10 | The number of results to return |
+| days | number | 7 | The number of days in the past to limit events |
+| startDate | `YYYY-MM-DD` | N/A | The start of a date range to limit events |
+| endDate | `YYYY-MM-DD` | N/A | The end of a date range to limit events |
+
+#### Example
+
+```ts
+async function eonet() {
+  const response = await nasa.getEonetEvents({
+    sourceIds: ["InciWeb"],
+    categoryIds: ["wildfires"],
+    status: "open",
+    limit: 5,
+    days: 7,
+  });
+}
+
 ```
